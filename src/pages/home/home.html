@@ -1,0 +1,60 @@
+<ion-header class="header-custom">
+
+  <ion-navbar>
+    <ion-title align="center">Order List</ion-title>
+    <!-- <ion-icon name="more" class="more-ic-head" (click)="presentPopover()"></ion-icon> -->
+    <button ion-button icon-only class="more-ic-head" (click)="presentPopover($event)">
+      <ion-icon name="more"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content class="bg">
+  <div>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="new">
+        On Going
+      </ion-segment-button>
+      <ion-segment-button value="current">
+        Incomming
+      </ion-segment-button>
+      <ion-segment-button value="history">
+        Previous
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="segment" class="segment-div">
+    <ion-list *ngSwitchCase="'new'">
+      <ion-item *ngFor="let order of ordersArray" (click)="gotoOrderDetail()">
+        <ion-thumbnail item-start>
+          <img [src]="order.img" [ngClass]="order.type == 'takeaway' ? 'type-img' : 'type-img-del'">
+        </ion-thumbnail>
+        <h2>{{order.name}}</h2>
+        <p>{{order.description}}</p>
+        <p>Total Amount: {{order.amount}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'current'">
+      <ion-item *ngFor="let order of ordersArray" (click)="gotoOrderDetail()">
+        <ion-thumbnail item-start>
+          <img [src]="order.img" [ngClass]="order.type == 'takeaway' ? 'type-img' : 'type-img-del'">
+        </ion-thumbnail>
+        <h2>{{order.name}}</h2>
+        <p>{{order.description}}</p>
+        <p>Total Amount: {{order.amount}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'history'">
+      <ion-item *ngFor="let order of ordersArray" (click)="gotoOrderDetail()">
+        <ion-thumbnail item-start>
+          <img [src]="order.img" [ngClass]="order.type == 'takeaway' ? 'type-img' : 'type-img-del'">
+        </ion-thumbnail>
+        <h2>{{order.name}}</h2>
+        <p>{{order.description}}</p>
+        <p>Total Amount: {{order.amount}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

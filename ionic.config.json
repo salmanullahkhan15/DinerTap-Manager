@@ -1,0 +1,7 @@
+{
+  "name": "DinerTap-Manager",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
